@@ -147,14 +147,17 @@ class Pregnancies(Table):
         return [
             ('caseid', 1, 12, int),
             ('nbrnaliv', 22, 22, int),
-            ('babysex', 56, 56, int),
-            ('birthwgt_lb', 57, 58, int),
-            ('birthwgt_oz', 59, 60, int),
-            ('prglength', 275, 276, int),
-            ('outcome', 277, 277, int),
-            ('birthord', 278, 279, int),
-            ('agepreg', 284, 287, int),
-            ('finalwgt', 423, 440, float),
+# How many babies did you have
+# that were born alive? Please include babies that may have died
+# shortly after birth and babies that you placed for adoption.
+            ('babysex', 56, 56, int),#sex
+            ('birthwgt_lb', 57, 58, int),#baby weight in lbs
+            ('birthwgt_oz', 59, 60, int),#baby weight in oz
+            ('prglength', 275, 276, int),# The integer duration of the pregnancy in weeks
+            ('outcome', 277, 277, int),#An integer code for the outcome of the pregnancy. The code 1 indicates a live birth.
+            ('birthord', 278, 279, int),#The integer birth order of each live birth; for example, the code for a first child is 1. For outcomes other than live birth, this field is blank.
+            ('agepreg', 284, 287, int), #Age at pregnancy outcome (recode)
+            ('finalwgt', 423, 440, float),#Final post-stratified and adjusted weight
             ]
 
     def Recode(self):
