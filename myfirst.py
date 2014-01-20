@@ -65,6 +65,8 @@ def Summarize(data_dir='.'):
 
     first_pmf.Normalize()
     other_pmf.Normalize()
+
+    first_pmf.Plot()
 def main(name,data_dir='.'):
     Summarize(data_dir);    #function in summary
 

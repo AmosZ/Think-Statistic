@@ -34,10 +34,7 @@ class _DictWrapper(object):
         self.d[x] = y
 
     def Incre(self,x,term=1):
-        try:
-            self.d[x] += self.d.get(x,0) + term
-        except KeyError:
-            self.d[x] = term
+        self.d[x] = self.d.get(x,0) + term
 
     def Mult(self,x,factor):
         self.d[x] *= self.d.get(x,0) * factor
@@ -50,6 +47,12 @@ class _DictWrapper(object):
         return sum(self.d.itervalues())
     def MaxLike(self):
         return max(self.d.itervalues())
+
+    def Plot(self):
+        import matplotlib.pyplot as pyplot
+        val,prob = self.Render()
+        pyplot.bar(val,prob)
+        pyplot.show()
 
 class Hist(_DictWrapper):
     def Freq(self):
@@ -110,12 +113,6 @@ class Pmf(_DictWrapper):
                 print x,p
         else:
             print self.d[x]
-    
-    def Plot(self):
-        import matplotlib.pyplot as pyplot
-        val,prob = self.Render()
-        pyplot.bar(val,prob)
-        pyplot.show()
 
 def MakePmfFromList(l,name=''):
     hist = MakeHistFromList(l,name)
